@@ -25,7 +25,7 @@ target_link_libraries(
 target_include_directories(threadpool PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 set(_PROTOBUF_LIBPROTOBUF libprotobuf)
-set(_PROTOBUF_PROTOC $<TARGET_FILE:protoc>)
+set(_PROTOBUF_PROTOC protoc)
 
 get_filename_component(agent_state_proto "./agent_state.proto" ABSOLUTE)
 get_filename_component(agent_state_proto_path "${agent_state_proto}" PATH)

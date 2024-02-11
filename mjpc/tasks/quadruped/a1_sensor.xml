@@ -1,0 +1,30 @@
+
+    <!-- estimator measurements -->
+    <framepos name="torso_posTEMP" objtype="site" objname="torsoTEMP" />
+    <framepos name="FR_posTEMP" objtype="site" objname="FRTEMP" />
+    <framepos name="FL_posTEMP" objtype="site" objname="FLTEMP" />
+    <framepos name="RR_posTEMP" objtype="site" objname="RRTEMP" />
+    <framepos name="RL_posTEMP" objtype="site" objname="RLTEMP" />
+
+    <jointpos name="pos_FR_hip_jointTEMP" joint="FR_hip_jointTEMP" />
+    <jointpos name="pos_FR_thigh_jointTEMP" joint="FR_thigh_jointTEMP" />
+    <jointpos name="pos_FR_calf_jointTEMP" joint="FR_calf_jointTEMP" />
+    <jointpos name="pos_FL_hip_jointTEMP" joint="FL_hip_jointTEMP" />
+    <jointpos name="pos_FL_thigh_jointTEMP" joint="FL_thigh_jointTEMP" />
+    <jointpos name="pos_FL_calf_jointTEMP" joint="FL_calf_jointTEMP" />
+    <jointpos name="pos_RR_hip_jointTEMP" joint="RR_hip_jointTEMP" />
+    <jointpos name="pos_RR_thigh_jointTEMP" joint="RR_thigh_jointTEMP" />
+    <jointpos name="pos_RR_calf_jointTEMP" joint="RR_calf_jointTEMP" />
+    <jointpos name="pos_RL_hip_jointTEMP" joint="RL_hip_jointTEMP" />
+    <jointpos name="pos_RL_thigh_jointTEMP" joint="RL_thigh_jointTEMP" />
+    <jointpos name="pos_RL_calf_jointTEMP" joint="RL_calf_jointTEMP" />
+
+    <touch name="FR_touchTEMP" site="FRTEMP"/>
+    <touch name="FL_touchTEMP" site="FLTEMP"/>
+    <touch name="RR_touchTEMP" site="RRTEMP"/>
+    <touch name="RL_touchTEMP" site="RLTEMP"/>
+
+    <!-- residual -->
+    <subtreecom    name="torso_subtreecomTEMP" body="trunkTEMP"/>
+    <subtreelinvel name="torso_subtreelinvelTEMP" body="trunkTEMP"/>
+    <subtreelinvel name="torso_angmomTEMP" body="trunkTEMP"/>

@@ -1,0 +1,70 @@
+<mujoco model="Unitree A1">
+  <compiler angle="radian" meshdir="assets" texturedir="assets" />
+
+  <option cone="elliptic" impratio="10" />
+
+  <default>
+    <default class="a1">
+      <geom friction="0.6" margin="0.001" condim="1" />
+      <joint axis="0 1 0" damping="2" armature="0.01" frictionloss="0.2" limited="true" />
+      <position kp="50" ctrllimited="true" forcelimited="true" forcerange="-33.5 33.5" />
+      <default class="abduction">
+        <joint axis="1 0 0" damping="1" range="-0.802851 0.802851" />
+        <position ctrlrange="-0.802851 0.802851" />
+      </default>
+      <default class="hip">
+        <joint range="-1.9472 3.28879" ref="-0.9" />
+        <position ctrlrange="-1.9472 3.28879" />
+      </default>
+      <default class="knee">
+        <joint range="-0.89653 0.883702" ref="1.8" />
+        <position ctrlrange="-0.89653 0.883702" />
+      </default>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" material="dark" />
+      </default>
+      <default class="collision">
+        <geom group="3" type="capsule" />
+        <default class="hip_left">
+          <geom size="0.04 0.04" quat="1 1 0 0" type="cylinder" pos="0 0.055 0" />
+        </default>
+        <default class="hip_right">
+          <geom size="0.04 0.04" quat="1 1 0 0" type="cylinder" pos="0 -0.055 0" />
+        </default>
+        <default class="thigh1">
+          <geom size="0.015" fromto="-0.02 0 0 -0.02 0 -0.16" />
+        </default>
+        <default class="thigh2">
+          <geom size="0.015" fromto="0 0 0 -0.02 0 -0.1" />
+        </default>
+        <default class="thigh3">
+          <geom size="0.015" fromto="-0.02 0 -0.16 0 0 -0.2" />
+        </default>
+        <default class="calf1">
+          <geom size="0.01" fromto="0 0 0 0.02 0 -0.13" />
+        </default>
+        <default class="calf2">
+          <geom size="0.01" fromto="0.02 0 -0.13 0 0 -0.2" />
+        </default>
+        <default class="foot">
+          <geom type="sphere" size="0.02" pos="0 0 -0.2" priority="1" solimp="0.015 1 0.031" condim="6" friction="0.8 0.02 0.01" />
+        </default>
+      </default>
+    </default>
+  </default>
+
+  <asset>
+    <material name="dark" specular="0" shininess="0.25" rgba="0.2 0.2 0.2 1" />
+    <texture type="2d" name="trunk_A1" file="trunk_A1.png" />
+    <material name="carbonfibre" texture="trunk_A1" specular="0" shininess="0.25" />
+
+    <mesh class="a1" file="calf.obj" />
+    <mesh class="a1" file="hip.obj" />
+    <mesh class="a1" file="thigh.obj" />
+    <mesh class="a1" file="thigh_mirror.obj" />
+    <mesh class="a1" file="trunk.obj" />
+  </asset>
+
+  <worldbody>
+  </worldbody>
+</mujoco>

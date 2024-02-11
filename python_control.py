@@ -22,13 +22,14 @@ import numpy as np
 
 import pathlib
 
+# Creating model and data
 m = mujoco.MjModel.from_xml_path("mjpc/tasks/quadruped/task_flat.xml")
 d = mujoco.MjData(m)
 
 # %%
 print(pathlib.Path(agent_lib.__file__).parent / "mjpc" / "ui_agent_server")
 
-# Initializing our agent
+# Initializing our agent (agent server/executable)
 agent = agent_lib.Agent(
         # This is to enable the ui
         server_binary_path=pathlib.Path(agent_lib.__file__).parent
@@ -70,13 +71,6 @@ qpos[:, 0] = d.qpos
 qvel[:, 0] = d.qvel
 time[0] = d.time
 # %%
-# Debugging
-print(m.body('goal').pos)
-
-print(m.body('trunk'))
-
-print(np.linalg.norm(m.body('goal').pos - m.body('trunk').pos))
-# %%
 
 ############################################
 # Executing simulation with multiple goals #
@@ -89,7 +83,11 @@ goals = [
 ]
 i = 0
 
-with mujoco.viewer.launch_passive(agent.model, d) as viewer:
+print("\n################")
+print(agent.get_task_parameters())
+print("\n################")
+
+with mujoco.viewer.launch_passive(m, d) as viewer:
     # Close the viewer automatically after 30 wall-seconds.
 
     start = time_.time()
@@ -114,17 +112,19 @@ with mujoco.viewer.launch_passive(agent.model, d) as viewer:
         # set ctrl from agent policy
         d.ctrl = agent.get_action()
 
-        print(agent.model.geom(31).pos)
-        print(m.geom(31).pos)
-        print()
-        
         # time_.sleep(0.1)
-        if (np.linalg.norm(m.body('goal').pos - m.body('trunk').pos) < 1):
-            m.body('goal').pos = goals[i]
-            i += 1
-            i /= len(goals)
+        if (np.linalg.norm(d.body('goal').xpos - d.body('trunk').xpos) < 0.7 or
+            np.linalg.norm(agent.model.body_pos[1] - d.body('trunk').xpos) < 0.7):
+            print(np.linalg.norm(d.body('goal').xpos - d.body('trunk').xpos) )
+            print("\nARRIVED!")
+            print(d.body('goal').xpos)
+            print(agent.model.body_pos[1])
+            print("\n################")
 
-        mujoco.mj_step(agent.model,d)
+            i += 1
+            d.body('goal').xpos = goals[i]
+            agent.model.body_pos[1] = goals[i]
+
         mujoco.mj_step(m,d)
 
         # Example modification of a viewer option: toggle contact points every two seconds.

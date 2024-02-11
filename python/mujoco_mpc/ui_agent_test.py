@@ -163,7 +163,6 @@ class UiAgentTest(absltest.TestCase):
       agent.set_mode("default_mode")
       self.assertEqual(agent.get_mode(), "default_mode")
 
-  @absltest.skip("asset import issue")
   def test_get_set_mode(self):
     model_path = (
         pathlib.Path(__file__).parent.parent.parent
@@ -171,10 +170,9 @@ class UiAgentTest(absltest.TestCase):
     )
     model = mujoco.MjModel.from_xml_path(str(model_path))
     with self.get_agent(task_id="Quadruped Flat", model=model) as agent:
-      agent.set_mode("Walk")
+      self.assertRaises(grpc.RpcError, lambda: agent.set_mode("Walk"))
       self.assertEqual(agent.get_mode(), "Walk")
 
-  @absltest.skip("asset import issue")
   def test_set_mode_error(self):
     model_path = (
         pathlib.Path(__file__).parent.parent.parent

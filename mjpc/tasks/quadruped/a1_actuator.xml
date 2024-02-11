@@ -1,0 +1,12 @@
+    <general class="torque" name="FR_hipTEMP" joint="FR_hip_joint"/>
+    <general class="torque" name="FR_thighTEMP" joint="FR_thigh_joint"/>
+    <general class="torque" name="FR_calfTEMP" joint="FR_calf_joint"/>
+    <general class="torque" name="FL_hipTEMP" joint="FL_hip_joint"/>
+    <general class="torque" name="FL_thighTEMP" joint="FL_thigh_joint"/>
+    <general class="torque" name="FL_calfTEMP" joint="FL_calf_joint"/>
+    <general class="torque" name="RR_hipTEMP" joint="RR_hip_joint"/>
+    <general class="torque" name="RR_thighTEMP" joint="RR_thigh_joint"/>
+    <general class="torque" name="RR_calfTEMP" joint="RR_calf_joint"/>
+    <general class="torque" name="RL_hipTEMP" joint="RL_hip_joint"/>
+    <general class="torque" name="RL_thighTEMP" joint="RL_thigh_joint"/>
+    <general class="torque" name="RL_calfTEMP" joint="RL_calf_joint"/>
